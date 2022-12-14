@@ -21,7 +21,14 @@ class _LoginScreenState extends State<LoginScreen> {
   FocusNode emailfocusnode = FocusNode();
   FocusNode passwordfocusnode = FocusNode();
 
-  returnvalue() {}
+  @override
+  void dispose() {
+   _emailcontroller.dispose();
+   _passwordcontroller.dispose();
+   emailfocusnode.dispose();
+   passwordfocusnode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 20.h,
             ),
-            RoundedButton(context,() {},"Login",  false)
+            RoundedButton(context,() {
+            },"Login",  false)
           ],
         ),
       ),
