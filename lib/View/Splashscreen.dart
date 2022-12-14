@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermvvm/View/HomeScreen.dart';
+import 'package:fluttermvvm/View/LoginScreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -22,7 +23,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (_) => const HomeScreen()));
+          context, CupertinoPageRoute(builder: (_) => const LoginScreen()));
     });
     super.initState();
   }

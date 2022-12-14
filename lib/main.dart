@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermvvm/ViewModel/AuthViewModel/AuthViewModel.dart';
 import 'package:provider/provider.dart';
 
+import 'Utils/Routes/Routes.dart';
+import 'Utils/Routes/RoutesName.dart';
 import 'View/Splashscreen.dart';
 import 'ViewModel/HomeViewModel/HomeViewModel.dart';
 
@@ -38,11 +40,11 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
             ),
-            home: child,
+            initialRoute: RoutesName.splash,
+            onGenerateRoute: Routes.generateRoute,
           ),
         );
-      },
-      child: const Splashscreen(),
+      }
     );
   }
 }
