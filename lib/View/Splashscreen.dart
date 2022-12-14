@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttermvvm/Utils/Routes/RoutesName.dart';
 import 'package:fluttermvvm/View/HomeScreen.dart';
 import 'package:fluttermvvm/View/LoginScreen.dart';
 
@@ -22,8 +23,8 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (_) => const LoginScreen()));
+      Navigator.pushReplacementNamed(
+          context, RoutesName.login);
     });
     super.initState();
   }

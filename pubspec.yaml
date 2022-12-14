@@ -33,6 +33,7 @@ dependencies:
   http: ^0.13.5
   provider: ^6.0.4
   flutter_screenutil: ^5.6.0
+  another_flushbar: ^1.12.29
   flutter:
     sdk: flutter
 
