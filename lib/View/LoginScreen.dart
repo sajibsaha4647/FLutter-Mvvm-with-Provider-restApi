@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 "password":_passwordcontroller.text
               };
               authviewmodel.loginApi(context, data);
-            },"Login",  false)
+            },"Login",  authviewmodel.loading)
           ],
         ),
       ),
