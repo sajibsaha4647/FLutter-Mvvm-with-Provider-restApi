@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermvvm/Utils/GeneralUtils/Utils.dart';
+import 'package:fluttermvvm/ViewModel/AuthViewModel/AuthViewModel.dart';
+import 'package:provider/provider.dart';
 
 import '../Resources/Components/RoundedButton.dart';
 import '../Utils/GeneralUtils/Utils.dart';
@@ -32,6 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final authviewmodel = Provider.of<AuthViewModel>(context);
+
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -91,6 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 20.h,
             ),
             RoundedButton(context,() {
+              var data = {
+                "email":_emailcontroller.text,
+                "password":_passwordcontroller.text
+              };
+              authviewmodel.loginApi(context, data);
             },"Login",  false)
           ],
         ),
