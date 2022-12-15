@@ -101,7 +101,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 "password":_passwordcontroller.text
               };
               authviewmodel.loginApi(context, data);
-            },"Login",  authviewmodel.loading)
+            },"Login",  authviewmodel.loading),
+            SizedBox(
+              height: 20.h,
+            ),
+            Container(
+              child: InkWell(
+                onTap: (){
+
+                },
+                child: Text("Don't have account? Signup",style: TextStyle(color: Colors.black),),
+              ),
+            )
           ],
         ),
       ),
