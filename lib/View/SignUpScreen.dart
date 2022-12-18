@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttermvvm/Utils/Routes/RoutesName.dart';
+import 'package:provider/provider.dart';
 
 import '../Resources/Components/RoundedButton.dart';
 import '../Utils/GeneralUtils/Utils.dart';
+import '../ViewModel/AuthViewModel/AuthViewModel.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -33,10 +36,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    final authviewmodel = Provider.of<AuthViewModel>(context);
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.cyan,
             centerTitle: true,
             title: Text("SignUp"),
@@ -97,17 +101,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     "email":_emailcontroller.text,
                     "password":_passwordcontroller.text
                   };
-                  // authviewmodel.loginApi(context, data);
-                },"Login",  false),
+                  authviewmodel.RegisterApi(context, data);
+                },"SignUp",  authviewmodel.registerloading),
                 SizedBox(
                   height: 20.h,
                 ),
                 Container(
                   child: InkWell(
                     onTap: (){
-
+                        Navigator.pushReplacementNamed(context, RoutesName.login);
                     },
-                    child: Text("Don't have account? Signup",style: TextStyle(color: Colors.black),),
+                    child: Text("Already have an account? SignIn",style: TextStyle(color: Colors.black),),
                   ),
                 )
               ],

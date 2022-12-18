@@ -2,14 +2,16 @@ import 'package:fluttermvvm/Data/Network/BaseApiService.dart';
 import 'package:fluttermvvm/Data/Network/NetworkService.dart';
 import 'package:fluttermvvm/Resources/ApiService.dart';
 
+import '../Model/loginModel.dart';
+
 class AuthRepository {
   BaseApiService baseApiService = NetworkApiservice();
 
-  Future<dynamic> LoginApi(dynamic data) async {
+  Future<LoginModel> LoginApi(dynamic data) async {
     try {
       dynamic response =
           await baseApiService.postPostApiResponse(AppUrl.endpointLogin, data);
-      return response;
+          return LoginModel.fromJson(response);
     } catch (e) {
       throw e;
     }
@@ -17,8 +19,8 @@ class AuthRepository {
 
   Future<dynamic> Register(dynamic data) async {
     try {
-      dynamic response =
-      await baseApiService.postPostApiResponse(AppUrl.endpointLogin, data);
+      dynamic response = await baseApiService.postPostApiResponse(
+          AppUrl.endpointRegister, data);
       return response;
     } catch (e) {
       throw e;

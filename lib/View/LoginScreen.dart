@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermvvm/Utils/GeneralUtils/Utils.dart';
+import 'package:fluttermvvm/Utils/Routes/RoutesName.dart';
 import 'package:fluttermvvm/ViewModel/AuthViewModel/AuthViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -40,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.cyan,
         centerTitle: true,
         title: Text("Login"),
@@ -108,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               child: InkWell(
                 onTap: (){
-
+                    Navigator.pushReplacementNamed(context, RoutesName.signup);
                 },
                 child: Text("Don't have account? Signup",style: TextStyle(color: Colors.black),),
               ),

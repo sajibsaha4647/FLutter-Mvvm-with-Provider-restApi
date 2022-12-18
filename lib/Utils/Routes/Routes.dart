@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fluttermvvm/View/HomeScreen.dart';
+import 'package:fluttermvvm/View/SignUpScreen.dart';
 import 'package:fluttermvvm/View/Splashscreen.dart';
 
 import '../../View/LoginScreen.dart';
@@ -14,6 +15,8 @@ class Routes {
         return CupertinoPageRoute(builder: (BuildContext context)=>LoginScreen());
       case RoutesName.splash :
         return CupertinoPageRoute(builder: (BuildContext context)=>Splashscreen());
+      case RoutesName.signup:
+        return CupertinoPageRoute(builder: (BuildContext context)=>SignUpScreen());
       default :
         return CupertinoPageRoute(builder: (BuildContext context)=>LoginScreen());
     }

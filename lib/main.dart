@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermvvm/ViewModel/AuthViewModel/AuthViewModel.dart';
+import 'package:fluttermvvm/ViewModel/SharepreferenceViewmodel/SharepreferenceViewModel.dart';
 import 'package:provider/provider.dart';
 
 import 'Utils/Routes/Routes.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
             // ChangeNotifierProvider(create: (_) => Cartprovider())
             ChangeNotifierProvider(create: (_) => AuthViewModel()),
             ChangeNotifierProvider(create: (_) => HomeViewModel()),
+            ChangeNotifierProvider(create: (_)=>SharepreferenceViewModel())
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

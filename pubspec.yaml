@@ -35,6 +35,7 @@ dependencies:
   flutter_screenutil: ^5.6.0
   email_validator: '^2.1.16'
   another_flushbar: ^1.12.29
+  shared_preferences: ^2.0.15
   flutter:
     sdk: flutter
 

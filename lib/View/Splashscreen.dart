@@ -7,6 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermvvm/Utils/Routes/RoutesName.dart';
 import 'package:fluttermvvm/View/HomeScreen.dart';
 import 'package:fluttermvvm/View/LoginScreen.dart';
+import 'package:fluttermvvm/ViewModel/AuthViewModel/AuthViewModel.dart';
+import 'package:provider/provider.dart';
+
+import '../Data/Response/ApiResponse.dart';
+import '../ViewModel/SharepreferenceViewmodel/SharepreferenceViewModel.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -20,12 +25,33 @@ class _SplashscreenState extends State<Splashscreen> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+  Getlogincheck(context)async{
+    final userPreference = Provider.of<SharepreferenceViewModel?>(context,listen: false);
+    final userLoginProvider = Provider.of<AuthViewModel?>(context,listen: false);
+
+    userPreference?.GetUserInfo().then((value){
+      print(value);
+      if(value != null){
+        Timer(const Duration(seconds: 3), () {
+          Navigator.pushReplacementNamed(context, RoutesName.home);
+          userLoginProvider?.setLoginResponse(ApiResponse.completed(value));
+        });
+      }else{
+        Timer(const Duration(seconds: 3), () {
+          Navigator.pushReplacementNamed(context, RoutesName.login);
+          userLoginProvider?.setLoginResponse(ApiResponse.loading());
+        });
+      }
+    }).onError((error, stackTrace){
+      print("error");
+      print(error.toString());
+    });
+  }
+
+
   @override
   void initState() {
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(
-          context, RoutesName.login);
-    });
+    Getlogincheck(context);
     super.initState();
   }
 
